@@ -22,7 +22,6 @@ public class MyApplication extends Application{
         //配置数据库
         setupDatabase();
     }
-
     /**
      * 配置数据库
      */
@@ -35,7 +34,6 @@ public class MyApplication extends Application{
         DaoMaster daoMaster = new DaoMaster(db);
         //获取Dao对象管理者
         daoSession = daoMaster.newSession();
-
     }
 
     public static DaoSession getDaoInstant() {

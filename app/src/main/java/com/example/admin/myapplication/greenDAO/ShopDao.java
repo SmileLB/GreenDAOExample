@@ -27,10 +27,6 @@ public class ShopDao extends AbstractDao<Shop, Long> {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
         public final static Property Price = new Property(2, String.class, "price", false, "price");
-        public final static Property Sell_num = new Property(3, int.class, "sell_num", false, "SELL_NUM");
-        public final static Property Image_url = new Property(4, String.class, "image_url", false, "IMAGE_URL");
-        public final static Property Address = new Property(5, String.class, "address", false, "ADDRESS");
-        public final static Property Type = new Property(6, int.class, "type", false, "TYPE");
     }
 
 
@@ -48,11 +44,7 @@ public class ShopDao extends AbstractDao<Shop, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"SHOP\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"NAME\" TEXT UNIQUE ," + // 1: name
-                "\"price\" TEXT," + // 2: price
-                "\"SELL_NUM\" INTEGER NOT NULL ," + // 3: sell_num
-                "\"IMAGE_URL\" TEXT," + // 4: image_url
-                "\"ADDRESS\" TEXT," + // 5: address
-                "\"TYPE\" INTEGER NOT NULL );"); // 6: type
+                "\"price\" TEXT);"); // 2: price
     }
 
     /** Drops the underlying database table. */
@@ -79,18 +71,6 @@ public class ShopDao extends AbstractDao<Shop, Long> {
         if (price != null) {
             stmt.bindString(3, price);
         }
-        stmt.bindLong(4, entity.getSell_num());
- 
-        String image_url = entity.getImage_url();
-        if (image_url != null) {
-            stmt.bindString(5, image_url);
-        }
- 
-        String address = entity.getAddress();
-        if (address != null) {
-            stmt.bindString(6, address);
-        }
-        stmt.bindLong(7, entity.getType());
     }
 
     @Override
@@ -111,18 +91,6 @@ public class ShopDao extends AbstractDao<Shop, Long> {
         if (price != null) {
             stmt.bindString(3, price);
         }
-        stmt.bindLong(4, entity.getSell_num());
- 
-        String image_url = entity.getImage_url();
-        if (image_url != null) {
-            stmt.bindString(5, image_url);
-        }
- 
-        String address = entity.getAddress();
-        if (address != null) {
-            stmt.bindString(6, address);
-        }
-        stmt.bindLong(7, entity.getType());
     }
 
     @Override
@@ -135,11 +103,7 @@ public class ShopDao extends AbstractDao<Shop, Long> {
         Shop entity = new Shop( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // name
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // price
-            cursor.getInt(offset + 3), // sell_num
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // image_url
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // address
-            cursor.getInt(offset + 6) // type
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // price
         );
         return entity;
     }
@@ -149,10 +113,6 @@ public class ShopDao extends AbstractDao<Shop, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setPrice(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setSell_num(cursor.getInt(offset + 3));
-        entity.setImage_url(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setAddress(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setType(cursor.getInt(offset + 6));
      }
     
     @Override

@@ -42,7 +42,7 @@ public class CartDao {
      * @return
      */
     public static List<Shop> queryCart() {
-        return MyApplication.getDaoInstant().getShopDao().queryBuilder().where(ShopDao.Properties.Type.eq(Shop.TYPE_LOVE)).list();
+        return MyApplication.getDaoInstant().getShopDao().queryBuilder().where(ShopDao.Properties.Name.eq("电脑")).list();
     }
 
     /**
