@@ -25,7 +25,7 @@ public class ShopDao extends AbstractDao<Shop, Long> {
      */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Name = new Property(1, String.class, "name", false, "NAME");
+        public final static Property Name = new Property(1, String.class, "name", false, "name");
         public final static Property Price = new Property(2, String.class, "price", false, "price");
     }
 
@@ -43,7 +43,7 @@ public class ShopDao extends AbstractDao<Shop, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"SHOP\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
-                "\"NAME\" TEXT UNIQUE ," + // 1: name
+                "\"name\" TEXT," + // 1: name
                 "\"price\" TEXT);"); // 2: price
     }
 

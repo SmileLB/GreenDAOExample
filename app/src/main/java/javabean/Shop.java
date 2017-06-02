@@ -3,7 +3,6 @@ package javabean;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
-import org.greenrobot.greendao.annotation.Unique;
 import org.greenrobot.greendao.annotation.Generated;
 
 /**
@@ -17,7 +16,7 @@ public class Shop {
     @Id(autoincrement = true)
     private Long id;
     //商品名称
-    @Unique
+    @Property(nameInDb = "name")
     private String name;
     //商品价格
     @Property(nameInDb = "price")
@@ -49,4 +48,5 @@ public class Shop {
     public void setPrice(String price) {
         this.price = price;
     }
+
 }

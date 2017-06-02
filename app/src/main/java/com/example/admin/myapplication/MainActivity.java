@@ -2,8 +2,8 @@ package com.example.admin.myapplication;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -27,8 +27,11 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<Shop> shops = CartDao.queryAll();
-                Toast.makeText(MainActivity.this,shops.toString(),Toast.LENGTH_SHORT).show();
+                List<Shop> list = CartDao.queryAll();
+                for (int i = 0; i < list.size(); i++) {
+                    Shop shop = list.get(i);
+                    Log.i("=========",shop.getName()+"=="+shop.getPrice());
+                }
             }
         });
     }

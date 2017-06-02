@@ -18,11 +18,11 @@ public class CartDao {
      * @param shop
      */
     public static void insertCart(Shop shop) {
-        MyApplication.getDaoInstant().getShopDao().insertOrReplace(shop);
+        MyApplication.getDaoInstant().getShopDao().insert(shop);
     }
 
     /**
-     * 删除数据
+     * 删除数据s
      * @param id
      */
     public static void deleteCart(long id) {
